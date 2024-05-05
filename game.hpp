@@ -5,25 +5,27 @@
 #define BLOCKS_IN_COLUMN (int)(GAME_HEIGHT / GRID_BLOCK_LENGTH)
 #define SCREEN_WIDTH (800)
 #define SCREEN_HEIGHT (800)
-#define GRID_BLOCK_LENGTH (20)
-#define HUD_HEIGHT (200)
-#define GAME_HEIGHT (SCREEN_HEIGHT - HUD_HEIGHT)
+#define GRID_BLOCK_LENGTH (30)
+#define MENU_HEIGHT (50)
+#define GAME_HEIGHT (SCREEN_HEIGHT - MENU_HEIGHT)
 #include "vec2f.hpp"
 #include "snake.hpp"
+// #include "raylib.h"
 #include <iostream>
 #include <ctime>
 class Game
 {
 public:
     Game();
-    void reset();
-
     int score;
-    double refresh_rate = 0.2; // Level
+    int distance;        // The snake moves one grid at a time
+    double refresh_rate; // Corresponds to the level --> A small value means the game refresh at a faster rate so the snake will move faster --> It goes faster with score
     Vec2f foodPos;
-    bool game_grid[BLOCKS_IN_ROW][BLOCKS_IN_COLUMN];
+    bool r;
 
     void drawFood(Vec2f snakePos, Vec2f snakeLastPos, Vec2f snakeTailPos[], int &length);
+    void drawMenu();
+    void reset(); // Reset the snake
 };
 
 #endif
