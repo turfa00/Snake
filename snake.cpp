@@ -1,18 +1,41 @@
 #include "snake.hpp"
-#include "raylib.h"
 
 Snake::Snake()
 {
     length = 2;
     dir = this->STOP;
     pos = Vec2f(BLOCKS_IN_ROW / 2, BLOCKS_IN_COLUMN / 2);
-    lastPos = Vec2f(pos.x + 1, pos.y);
+    // lastPos = Vec2f(pos.x + 1, pos.y);
+    tail[0] = pos;
+    tail[1] = Vec2f(pos.x + 1, pos.y);
 }
 
 void Snake::draw()
 {
+    // Draw Snake
+    DrawRectangleLines(pos.x * GRID_BLOCK_LENGTH,
+                       HUD_HEIGHT + pos.y * GRID_BLOCK_LENGTH,
+                       GRID_BLOCK_LENGTH, GRID_BLOCK_LENGTH, DARKBROWN);
     for (int i = 0; i < length; i++)
     {
+        DrawRectangleLines(tail[i].x * GRID_BLOCK_LENGTH,
+                           HUD_HEIGHT + tail[i].y * GRID_BLOCK_LENGTH,
+                           GRID_BLOCK_LENGTH, GRID_BLOCK_LENGTH, DARKBROWN);
+    }
+}
+void Snake::updateTail()
+{
+    // Update tail
+    for (int i = length; i >= 0; --i)
+    {
+        if (i == 0)
+        {
+            tail[i] = pos;
+        }
+        else
+        {
+            tail[i] = tail[i - 1];
+        }
     }
 }
 void Snake::move()
@@ -90,4 +113,6 @@ void Snake::reset()
     dir = this->STOP;
     pos = Vec2f(BLOCKS_IN_ROW / 2, BLOCKS_IN_COLUMN / 2);
     lastPos = Vec2f(pos.x + 1, pos.y);
+    tail[0] = pos;
+    tail[1] = Vec2f(pos.x + 1, pos.y);
 }

@@ -3,6 +3,7 @@
 #define SNAKE_H
 #include "vec2f.hpp"
 #include "game.hpp"
+#include "raylib.h"
 class Snake
 {
 public:
@@ -23,6 +24,7 @@ public:
 
     void move();
     void draw();
+    void updateTail();
     void reset();
 };
 

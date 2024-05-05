@@ -17,7 +17,6 @@ int main()
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Snake");
     SetTargetFPS(60);
 
-    double refresh_rate = 0.2;
     double time = GetTime();
     int speed = 1.f;
 
@@ -29,7 +28,7 @@ int main()
         BeginDrawing();
 
         // In game tick
-        if (snake.dir != snake.STOP && GetTime() >= time + refresh_rate)
+        if (snake.dir != snake.STOP && GetTime() >= time + game.refresh_rate)
         {
             time = GetTime();
             snake.lastPos = snake.pos;
@@ -74,29 +73,24 @@ int main()
                     snake.pos.y += speed;
                 break;
             }
+            snake.tail[0] = snake.pos;
+            snake.updateTail();
         }
-
         // HUD
         BeginScissorMode(0, 0, SCREEN_WIDTH, HUD_HEIGHT);
         ClearBackground(GOLD);
+        DrawText("Score:", SCREEN_WIDTH * 0,
+                 HUD_HEIGHT * 0.1, 20, BLACK);
+        DrawText(to_string(game.score).c_str(), SCREEN_WIDTH * 0.1,
+                 HUD_HEIGHT * 0.1, 20, BLACK);
         EndScissorMode();
 
         // Game grid
         BeginScissorMode(0, HUD_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - HUD_HEIGHT);
         ClearBackground(BLACK);
-        // Draw Snake
-        DrawRectangleLines(snake.pos.x * GRID_BLOCK_LENGTH,
-                           HUD_HEIGHT + snake.pos.y * GRID_BLOCK_LENGTH,
-                           GRID_BLOCK_LENGTH, GRID_BLOCK_LENGTH, DARKBROWN);
 
-        // Draw Tail
-        for (int i = 0; i < snake.length; i++)
-        {
-            DrawRectangleLines(snake.lastPos.x * GRID_BLOCK_LENGTH,
-                               HUD_HEIGHT + snake.lastPos.y * GRID_BLOCK_LENGTH,
-                               GRID_BLOCK_LENGTH, GRID_BLOCK_LENGTH, DARKBROWN);
-        }
-
+        snake.draw();
+        game.drawFood(snake.pos, snake.lastPos, snake.tail, snake.length);
         EndScissorMode();
         EndDrawing();
     }

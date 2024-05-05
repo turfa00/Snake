@@ -9,17 +9,21 @@
 #define HUD_HEIGHT (200)
 #define GAME_HEIGHT (SCREEN_HEIGHT - HUD_HEIGHT)
 #include "vec2f.hpp"
+#include "snake.hpp"
+#include <iostream>
+#include <ctime>
 class Game
 {
 public:
     Game();
     void reset();
 
-    // Game(int rows, int columns);
     int score;
+    double refresh_rate = 0.2; // Level
     Vec2f foodPos;
-    // int rowBlocks, columnBlocks;
     bool game_grid[BLOCKS_IN_ROW][BLOCKS_IN_COLUMN];
+
+    void drawFood(Vec2f snakePos, Vec2f snakeLastPos, Vec2f snakeTailPos[], int &length);
 };
 
 #endif
