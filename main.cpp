@@ -25,7 +25,7 @@ int main()
         // Game menu
         game.drawMenu();
 
-        // Playable screen
+        // Playing screen
         BeginScissorMode(0, MENU_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - MENU_HEIGHT);
         ClearBackground(BLACK);
 
@@ -34,7 +34,7 @@ int main()
         EndScissorMode();
         EndDrawing();
     }
-
+    // Close rayLib and application
     CloseWindow();
     return 0;
 }
