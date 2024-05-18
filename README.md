@@ -1,9 +1,12 @@
 # Raylib C++ Snake Game
-Ceci est un implementation du jeu classique d'arcade "Snake". Il consiste à guider un serpent en pleine croissance pour qu'il consomme de la nourriture
-tout en évitant les collisions avec les murs ou avec lui-même.
- 
+Ceci est un implementation du jeu classique d'arcade "Snake". Il consiste à guider le serpent avec les touches directionnelles en pleine croissance pour 
+qu'il consomme de la nourriture tout en évitant les collisions avec les murs ou avec lui-même.\
+le code est écrit en C++ et raylib pour l'affichage en 2D.
+
+Raylib est un API graphique conçue pour être minimaliste avec les diverses fonctionnalités et une grande collection pour le développement de jeux et de la programmation multimédia.\
+
 ### Exécution
-le code est écrit en C++ et peut donc être exécuté par n'importe quel compilateur prenant en charge C++.\
+le code est écrit en C++ et raylib pour l'affichage en 2D peut donc être exécuté par n'importe quel compilateur prenant en charge C++.\
 Le fichier étant écrit dans le flux de sortie standard, vous devrez le rediriger vers un fichier image. Le programme doit donc être construit avec cmake.
 
 Sous Windows, pour obtenir la version de débogage de CMake, il faut exécuter cette commande :
