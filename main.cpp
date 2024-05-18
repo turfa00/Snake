@@ -16,7 +16,7 @@ int main()
     game.reset();            // Reset all values and the snake
     while (WindowShouldClose() == false)
     {
-        snake.move(game.refresh_rate, game.distance, time, game.r);
+        snake.move(game.refresh_rate, game.step, time, game.r);
         BeginDrawing();
         if (game.r)
         {

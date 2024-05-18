@@ -5,7 +5,6 @@ Snake::Snake()
     length = 2;
     dir = this->STOP;
     pos = Vec2f(BLOCKS_IN_ROW / 2, BLOCKS_IN_COLUMN / 2);
-    // lastPos = Vec2f(pos.x + 1, pos.y);
     tail[0] = pos;
     tail[1] = Vec2f(pos.x + 1, pos.y);
 }
@@ -58,7 +57,7 @@ bool Snake::checkCollision()
     }
     return false;
 }
-void Snake::move(int refresh_rate, int distance, double time, bool &r)
+void Snake::move(double refresh_rate, int step, double &time, bool &r)
 {
     // Change the direction value according to the arrow key pressed
     /*
@@ -131,10 +130,12 @@ void Snake::move(int refresh_rate, int distance, double time, bool &r)
         }
         break;
     }
-    // In game tick
+    // Movement in game
     if (dir != STOP && GetTime() >= time + refresh_rate)
     {
-        lastPos = pos;
+        time = GetTime();
+
+        lastPos = pos; // Remove comment
         switch (dir)
         {
         case STOP:
@@ -143,44 +144,41 @@ void Snake::move(int refresh_rate, int distance, double time, bool &r)
             if (pos.x == 0)
             {
                 r = true;
-                // game.reset();
                 reset();
             }
             else
-                pos.x -= distance;
+                pos.x -= step;
             break;
         case RIGHT:
             if (pos.x == BLOCKS_IN_ROW - 1)
             {
-                // reset();
                 r = true;
                 reset();
             }
             else
-                pos.x += distance;
+                pos.x += step;
             break;
         case UP:
             if (pos.y == 0)
             {
-                // game.reset();
                 r = true;
                 reset();
             }
             else
-                pos.y -= distance;
+                pos.y -= step;
             break;
         case DOWN:
             if (pos.y == BLOCKS_IN_COLUMN - 1)
             {
-                // game.reset();
                 r = true;
                 reset();
             }
             else
-                pos.y += distance;
+                pos.y += step;
             break;
         }
         tail[0] = pos;
+        // Update the tail's length, position and check for collisions
         updateTail();
         checkCollision();
         if (checkCollision())
@@ -196,7 +194,6 @@ void Snake::reset()
     length = 2;
     dir = this->STOP;
     pos = Vec2f(BLOCKS_IN_ROW / 2, BLOCKS_IN_COLUMN / 2);
-    lastPos = Vec2f(pos.x + 1, pos.y);
     tail[0] = pos;
     tail[1] = Vec2f(pos.x + 1, pos.y);
 }

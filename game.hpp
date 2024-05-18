@@ -18,10 +18,10 @@ class Game
 public:
     Game();
     int score;
-    int distance;        // The snake moves one grid at a time
+    int step;            // The snake moves one grid at a time
     double refresh_rate; // Corresponds to the level --> A small value means the game refresh at a faster rate so the snake will move faster --> It goes faster with score
     Vec2f foodPos;
-    bool r;
+    bool r; // Boolean value for  when the snake hits borders or its own tails
 
     void drawFood(Vec2f snakePos, Vec2f snakeLastPos, Vec2f snakeTailPos[], int &length);
     void drawMenu();

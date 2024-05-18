@@ -22,7 +22,7 @@ public:
     };
     direction dir;
 
-    void move(int refresh_rate, int distance, double time, bool &r);
+    void move(double refresh_rate, int step, double &time, bool &r);
     void draw();
     void updateTail();
     bool checkCollision();
