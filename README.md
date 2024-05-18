@@ -8,7 +8,7 @@ Raylib est un API graphique conçue pour être minimaliste avec les diverses fon
 Plus d'informations sur RayLib: https://github.com/raysan5/raylib
 
 ### Résultat
-![Snake](https://github.com/turfa00/Snake/assets/80334127/cfb0c15c-8cf8-4c1e-bdee-4c60abd0a749)
+![Snake](https://github.com/turfa00/Snake/assets/80334127/11f66391-f133-4da8-84a6-9f4f762b2b43)
 
 
 
