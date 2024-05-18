@@ -5,9 +5,10 @@ le code est écrit en C++ et raylib pour l'affichage en 2D.
 
 Raylib est un API graphique conçue pour être minimaliste avec les diverses fonctionnalités et une grande collection pour le développement de jeux et de la programmation multimédia.\
 
-Pour installer RayLib: https://github.com/raysan5/raylib
+Plus d'informations sur RayLib: https://github.com/raysan5/raylib
 
 ### Résultat
-![image](https://github.com/turfa00/Ray_Tracer/assets/80334127/0205ad9e-3958-4608-904a-9193d29c3681)
+![Snake](https://github.com/turfa00/Snake/assets/80334127/cfb0c15c-8cf8-4c1e-bdee-4c60abd0a749)
+
 
 
