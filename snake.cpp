@@ -189,7 +189,7 @@ void Snake::move(double refresh_rate, int step, double &time, bool &r)
     }
 }
 
-void Snake::reset()
+void Snake::reset() // Same variable's values as the constructor
 {
     length = 2;
     dir = this->STOP;
